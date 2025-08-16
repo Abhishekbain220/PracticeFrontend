@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ProductContext } from '../utils/ProductContext.jsx';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../utils/UserContext.jsx';
+import Loading from './Loading.jsx';
 
 const Home = () => {
     let { products, setProducts, getProducts, deleteProduct,title,rate,setRate,setTitle,setRateupdateSwitch, setUpdateSwitch, createSwitch, setCreateSwitch ,productId, setProductId } = useContext(ProductContext)
@@ -30,7 +31,7 @@ const Home = () => {
         
     }, [token])
 
-    return (
+    return products ?(
         <div>
             <h1>Home</h1>
             {products && products.map((p, i) => (
@@ -41,8 +42,9 @@ const Home = () => {
                     {token && <button onClick={() => updateProduct(p._id)}>Update</button>}
                 </div>
             ))}
+        
         </div>
-    )
+    ):(<Loading/>)
 }
 
 export default Home

@@ -4,7 +4,7 @@ import { createContext, useState } from "react";
 
 export let ProductContext = createContext()
 export let ProductProvider = (props) => {
-    const [products, setProducts] = useState([])
+    const [products, setProducts] = useState(null)
     const [title, setTitle] = useState("")
     const [rate, setRate] = useState("")
     const [createSwitch, setCreateSwitch] = useState(false)
